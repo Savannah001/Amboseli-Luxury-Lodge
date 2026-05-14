@@ -158,3 +158,79 @@ function initBookPage() {
       }
     });
   }
+    // Form validation
+  var inputs = form.querySelectorAll('.form-input, .form-select, .form-textarea');
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('blur', function() { validateField(this); });
+    inputs[i].addEventListener('input', function() {
+      if (this.classList.contains('error')) { clearFieldError(this); }
+    });
+  }
+  // Form submission
+  form.addEventListener('submit', handleFormSubmit);
+}
+// Validating one field
+function validateField(field) {
+  var name = field.name;
+  var value = field.value.trim();
+  var errorMsg = '';
+  if (name === 'firstName') {
+    if (!value) errorMsg = 'First name is required';
+    else if (value.length < 2) errorMsg = 'First name must be at least 2 characters';
+  } else if (name === 'lastName') {
+    if (!value) errorMsg = 'Last name is required';
+    else if (value.length < 2) errorMsg = 'Last name must be at least 2 characters';
+  } else if (name === 'email') {
+    if (!value) errorMsg = 'Email address is required';
+    else if (!isValidEmail(value)) errorMsg = 'Please enter a valid email';
+  } else if (name === 'phone') {
+    if (!value) errorMsg = 'Phone number is required';
+    else if (!isValidPhone(value)) errorMsg = 'Please enter a valid phone number';
+  } else if (name === 'checkIn') {
+    if (!value) errorMsg = 'Check-in date is required';
+    else if (value < getTodayString()) errorMsg = 'Date cannot be in the past';
+  } else if (name === 'checkOut') {
+    if (!value) errorMsg = 'Check-out date is required';
+    else {
+      var checkIn = document.getElementById('checkIn').value;
+      if (checkIn && value <= checkIn) errorMsg = 'Must be after check-in date';
+      else if (value < getTodayString()) errorMsg = 'Date cannot be in the past';
+    }
+  } else if (name === 'guests') {
+    if (!value) errorMsg = 'Number of guests is required';
+    else if (parseInt(value) < 1 || parseInt(value) > 10) errorMsg = 'Must be between 1 and 10';
+  } else if (name === 'package') {
+    if (!value) errorMsg = 'Please select a package';
+  }
+  if (errorMsg) { showFieldError(field, errorMsg); return false; }
+  else { clearFieldError(field); field.classList.add('valid'); return true; }
+}
+// error message
+function showFieldError(field, message) {
+  field.classList.add('error');
+  field.classList.remove('valid');
+  var errorEl = document.getElementById(field.name + '-error');
+  if (errorEl) { errorEl.textContent = message; errorEl.classList.add('visible'); }
+}
+// Clear error message
+function clearFieldError(field) {
+  field.classList.remove('error');
+  var errorEl = document.getElementById(field.name + '-error');
+  if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('visible'); }
+}
+// Handle form submission
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var form = e.target;
+  var fields = form.querySelectorAll('.form-input, .form-select, .form-textarea');
+  var isValid = true;
+
+  // Validate all fields
+  for (var i = 0; i < fields.length; i++) {
+    if (!validateField(fields[i])) { isValid = false; }
+  }
+  if (!isValid) {
+    var firstError = form.querySelector('.form-input.error, .form-select.error');
+    if (firstError) { firstError.scrollIntoView({ behavior: 'smooth', block: 'center' }); firstError.focus(); }
+    return;
+  }
