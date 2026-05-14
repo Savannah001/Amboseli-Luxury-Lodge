@@ -299,3 +299,35 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
 .package-desc {
   font-size: 0.9rem; color: var(--bark-light); line-height: 1.6;
 }
+/* reservation cards styling */
+.reservation-card {
+  background-color: var(--white); border-radius: 8px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--accent); margin-bottom: 1.5rem;
+}
+.reservation-header {
+  padding: 1.25rem; background-color: var(--cream);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 0.5rem;
+}
+.reservation-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--primary);
+}
+.reservation-package {
+  background-color: var(--accent); color: var(--primary-dark);
+  padding: 0.25rem 0.75rem; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+}
+.reservation-body { padding: 1.25rem; }
+.reservation-detail {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0; font-size: 0.9rem; color: var(--bark-light);
+}
+.reservation-actions {
+  padding: 1rem 1.25rem; border-top: 1px solid var(--cream-dark);
+  display: flex; justify-content: flex-end;
+}
+.empty-state { text-align: center; padding: 3rem 2rem; }
+.empty-state h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.5rem; }
+.empty-state p { color: var(--bark-light); margin-bottom: 1.5rem; }
