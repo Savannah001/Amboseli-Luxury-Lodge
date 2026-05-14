@@ -19,3 +19,11 @@
 /* Make sure every element addheres to this before styling */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Body Styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--bark);
+  background-color: var(--cream);
+  line-height: 1.6;
+}
