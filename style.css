@@ -27,3 +27,9 @@ body {
   background-color: var(--cream);
   line-height: 1.6;
 }
+
+/* Heading styling */
+h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.2;
+}
