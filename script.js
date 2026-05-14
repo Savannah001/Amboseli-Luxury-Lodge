@@ -307,3 +307,32 @@ function renderReservations() {
       '<a href="book.html" class="btn-primary">Make a Reservation</a></div>';
     return;
   }
+    // Sort from newest
+  bookings.sort(function(a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+  var html = '';
+  for (var i = 0; i < bookings.length; i++) {
+    var b = bookings[i];
+    var nights = calculateNights(b.checkIn, b.checkOut);
+    var nightsText = nights + ' night' + (nights !== 1 ? 's' : '');
+    var guestsText = b.guests + ' guest' + (b.guests !== 1 ? 's' : '');
+    html = html + '<div class="reservation-card">';
+    html = html + '<div class="reservation-header">';
+    html = html + '<div class="reservation-name">' + b.firstName + ' ' + b.lastName + '</div>';
+    html = html + '<div class="reservation-package">' + b.package + '</div>';
+    html = html + '</div>';
+    html = html + '<div class="reservation-body">';
+    html = html + '<div class="reservation-detail"><strong>Dates:</strong> ' + formatDate(b.checkIn) + ' — ' + formatDate(b.checkOut) + ' (' + nightsText + ')</div>';
+    html = html + '<div class="reservation-detail"><strong>Guests:</strong> ' + guestsText + '</div>';
+    html = html + '<div class="reservation-detail"><strong>Email:</strong> ' + b.email + '</div>';
+    html = html + '<div class="reservation-detail"><strong>Phone:</strong> ' + b.phone + '</div>';
+    if (b.specialRequests) {
+      html = html + '<div class="reservation-detail"><strong>Requests:</strong> ' + b.specialRequests + '</div>';
+    }
+    html = html + '</div>';
+    html = html + '<div class="reservation-actions">';
+    html = html + '<button class="btn-danger" onclick="confirmDelete(\'' + b.id + '\')">Cancel Booking</button>';
+    html = html + '</div>';
+    html = html + '</div>';
+  }
+  container.innerHTML = html;
+}
