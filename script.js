@@ -234,3 +234,76 @@ function handleFormSubmit(e) {
     if (firstError) { firstError.scrollIntoView({ behavior: 'smooth', block: 'center' }); firstError.focus(); }
     return;
   }
+  //booking object
+  var booking = {
+    id: generateId(),
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    checkIn: document.getElementById('checkIn').value,
+    checkOut: document.getElementById('checkOut').value,
+    guests: parseInt(document.getElementById('guests').value),
+    package: document.getElementById('package').value,
+    specialRequests: document.getElementById('specialRequests').value.trim(),
+    createdAt: new Date().toISOString()
+  };
+  saveBooking(booking);
+  showBookingSuccess(booking);
+  form.reset();
+  for (var j = 0; j < fields.length; j++) {
+    fields[j].classList.remove('valid', 'error');
+    clearFieldError(fields[j]);
+  }
+  showToast('Reservation confirmed successfully!', 'success');
+}
+// Show success message
+function showBookingSuccess(booking) {
+  var formContainer = document.getElementById('form-container');
+  var successContainer = document.getElementById('success-container');
+  if (!formContainer || !successContainer) return;
+  var nights = calculateNights(booking.checkIn, booking.checkOut);
+  var nightsText = nights + ' night' + (nights !== 1 ? 's' : '');
+  var html = '<div class="success-message">';
+  html = html + '<div class="success-icon">&#10003;</div>';
+html = html + '<h2 style="color:#1a3c34;margin-bottom:0.5rem;">Reservation Confirmed!</h2>';
+html = html + '<p style="color:#6b5b4f;margin-bottom:1.5rem;">Thank you, ' + booking.firstName + '! Your safari adventure awaits.</p>';
+html = html + '<div style="background:#faf6f0;border-radius:8px;padding:1.5rem;text-align:left;margin-bottom:1.5rem;">';
+html = html + '<p><strong>Guest:</strong> ' + booking.firstName + ' ' + booking.lastName + '</p>';
+html = html + '<p><strong>Package:</strong> ' + booking.package + '</p>';
+html = html + '<p><strong>Check-in:</strong> ' + formatDate(booking.checkIn) + '</p>';
+html = html + '<p><strong>Check-out:</strong> ' + formatDate(booking.checkOut) + '</p>';
+html = html + '<p><strong>Duration:</strong> ' + nightsText + '</p>';
+html = html + '<p><strong>Guests:</strong> ' + booking.guests + '</p>';
+  if (booking.specialRequests) {
+    html = html + '<p><strong>Special Requests:</strong> ' + booking.specialRequests + '</p>';
+  }
+  html = html + '</div>';
+  html = html + '<a href="reservations.html" class="btn-primary">View Reservations</a> ';
+  html = html + '<button onclick="resetBookingForm()" class="btn-outline">Book Another</button>';
+  html = html + '</div>';
+  successContainer.innerHTML = html;
+  formContainer.style.display = 'none';
+  successContainer.style.display = 'block';
+}
+// Reset form visibility
+function resetBookingForm() {
+  var formContainer = document.getElementById('form-container');
+  var successContainer = document.getElementById('success-container');
+  if (formContainer) formContainer.style.display = '';
+  if (successContainer) successContainer.style.display = 'none';
+}
+// reservation page
+function initReservationsPage() { renderReservations(); }
+// Show all bookings
+function renderReservations() {
+  var container = document.getElementById('reservations-list');
+  if (!container) return;
+  var bookings = getBookings();
+  if (bookings.length === 0) {
+    container.innerHTML = '<div class="empty-state">' +
+      '<h3>No Reservations Yet</h3>' +
+      '<p>Start planning your African safari adventure by making your first reservation.</p>' +
+      '<a href="book.html" class="btn-primary">Make a Reservation</a></div>';
+    return;
+  }
