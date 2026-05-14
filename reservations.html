@@ -8,6 +8,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="reservations">
+    <!-- Navigation Links on the Home page -->
+<header class="navbar" role="banner">
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="logo">
+        <span class="logo-text">AMBOSELI LUXURY LODGE</span>
+      </a>
 
+      <!-- Navigation on a laptop -->
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-page="home">Home</a>
+        <a href="about.html" class="nav-link" data-page="about">About</a>
+        <a href="experiences.html" class="nav-link" data-page="experiences">Experiences</a>
+        <a href="book.html" class="nav-link" data-page="book">Book Now</a>
+        <a href="reservations.html" class="nav-link" data-page="reservations">Reservations</a>
+      </div>
+
+      <!-- Navigation a mobile phone -->
+      <button id="mobile-menu-btn" class="mobile-btn" aria-label="Open menu">
+        <span class="menu-icon">&#9776;</span>
+      </button>
+    </nav>
+  </header>
+  <!-- Mobile Menu -->
+  <div id="mobile-overlay" class="mobile-overlay"></div>
+
+  <!-- Mobile Menu Links -->
+  <aside id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="mobile-menu-header">
+      <span class="logo-text">AMBOSELI LUXURY LODGE</span>
+      <button id="mobile-close-btn" class="close-btn" aria-label="Close menu">&times;</button>
+    </div>
+    <a href="index.html" class="mobile-link" data-page="home">Home</a>
+    <a href="about.html" class="mobile-link" data-page="about">About</a>
+    <a href="experiences.html" class="mobile-link" data-page="experiences">Experiences</a>
+    <a href="book.html" class="mobile-link" data-page="book">Book Now</a>
+    <a href="reservations.html" class="mobile-link" data-page="reservations">Reservations</a>
+  </aside>
+  <main>
 </body>
 </html>
