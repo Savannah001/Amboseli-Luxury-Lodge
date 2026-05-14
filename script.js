@@ -336,3 +336,33 @@ function renderReservations() {
   }
   container.innerHTML = html;
 }
+// Show delete confirmation message
+function confirmDelete(id) {
+  var modal = document.getElementById('delete-modal');
+  if (!modal) return;
+  modal.classList.add('open');
+  var confirmBtn = document.getElementById('confirm-delete-btn');
+  var cancelBtn = document.getElementById('cancel-delete-btn');
+
+  // Clone to remove old listeners - successfully deleted the booking
+  var newConfirm = confirmBtn.cloneNode(true);
+  confirmBtn.parentNode.replaceChild(newConfirm, confirmBtn);
+  var newCancel = cancelBtn.cloneNode(true);
+  cancelBtn.parentNode.replaceChild(newCancel, cancelBtn);
+  newConfirm.addEventListener('click', function() {
+    deleteBooking(id);
+    modal.classList.remove('open');
+    renderReservations();
+    showToast('Reservation cancelled.', 'success');
+  });
+  newCancel.addEventListener('click', function() { modal.classList.remove('open'); });
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) { modal.classList.remove('open'); }
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  initNavigation();
+  var page = document.body.dataset.page;
+  if (page === 'book') { initBookPage(); }
+  if (page === 'reservations') { initReservationsPage(); }
+});
