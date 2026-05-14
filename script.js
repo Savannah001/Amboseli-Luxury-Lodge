@@ -136,3 +136,25 @@ function setActiveNavLink() {
     }
   }
 }
+
+//booking functionality
+function initBookPage() {
+  var form = document.getElementById('booking-form');
+  if (!form) return;
+  // Set min date to today
+  var today = getTodayString();
+  var checkInInput = document.getElementById('checkIn');
+  var checkOutInput = document.getElementById('checkOut');
+  if (checkInInput) checkInInput.setAttribute('min', today);
+  if (checkOutInput) checkOutInput.setAttribute('min', today);
+  // Update checkout min when checkin changes
+  if (checkInInput) {
+    checkInInput.addEventListener('change', function() {
+      if (checkInInput.value) {
+        checkOutInput.setAttribute('min', checkInInput.value);
+        if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
+          checkOutInput.value = '';
+        }
+      }
+    });
+  }
