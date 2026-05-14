@@ -45,6 +45,32 @@
     <a href="book.html" class="mobile-link" data-page="book">Book Now</a>
     <a href="reservations.html" class="mobile-link" data-page="reservations">Reservations</a>
   </aside>
+<!-- My reservation list   -->
+    <section class="section">
+      <div class="container" style="max-width:800px;">
+        <div class="section-header">
+          <div class="section-subtitle">Guest Reservations</div>
+          <h2 class="section-title">Your Bookings</h2>
+          <div class="divider"></div>
+          <p class="section-desc">All reservations made through the Amboseli booking system are displayed here.</p>
+        </div>
+
+        <div id="reservations-list">
+          <!-- will be gotten from Javascript -->
+        </div>
+      </div>
+    </section>
+<!-- deleting a reservation     -->
+    <div id="delete-modal" class="modal-overlay">
+      <div class="modal-box">
+        <h3>Cancel Reservation?</h3>
+        <p>This action cannot be undone. The reservation will be permanently removed from your bookings.</p>
+        <div class="modal-actions">
+          <button id="cancel-delete-btn" class="btn-outline">Keep Reservation</button>
+          <button id="confirm-delete-btn" class="btn-danger">Cancel Booking</button>
+        </div>
+      </div>
+    </div> 
   <main>
 </body>
 </html>
