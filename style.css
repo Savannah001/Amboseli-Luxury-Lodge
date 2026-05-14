@@ -1,0 +1,17 @@
+/* This stylesheet is shared across all files */
+
+/* Color definitions */
+:root {
+  --primary: #1a3c34;
+  --primary-dark: #0f2420;
+  --accent: #c9a96e;
+  --accent-light: #dfc594;
+  --accent-dark: #a88940;
+  --cream: #faf6f0;
+  --cream-dark: #f0ebe3;
+  --bark: #2d1f14;
+  --bark-light: #6b5b4f;
+  --white: #ffffff;
+  --error: #dc2626;
+  --success: #16a34a;
+}
