@@ -31,3 +31,29 @@ function isValidPhone(phone) {
 function getTodayString() {
   return new Date().toISOString().split('T')[0];
 }
+
+//Local storage functions
+
+// Get all bookings from localStorage
+function getBookings() {
+  var data = localStorage.getItem(STORAGE_KEY);
+  if (data) { return JSON.parse(data); }
+  return [];
+}
+// Save a new booking
+function saveBooking(booking) {
+  var bookings = getBookings();
+  bookings.push(booking);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings));
+  return true;
+}
+// Delete a booking by ID
+function deleteBooking(id) {
+  var bookings = getBookings();
+  var filtered = [];
+  for (var i = 0; i < bookings.length; i++) {
+    if (bookings[i].id !== id) { filtered.push(bookings[i]); }
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
+  return true;
+}
