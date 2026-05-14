@@ -15,3 +15,7 @@
   --error: #dc2626;
   --success: #16a34a;
 }
+
+/* Make sure every element addheres to this before styling */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
