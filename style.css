@@ -377,3 +377,10 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+/* Mobile responsiveness */
+@media (min-width: 640px) {
+  .hero-content h1 { font-size: 3.25rem; }
+  .section-title { font-size: 2.5rem; }
+  .cards-grid, .three-col-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
