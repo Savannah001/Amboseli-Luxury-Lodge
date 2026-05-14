@@ -331,3 +331,49 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
 .empty-state { text-align: center; padding: 3rem 2rem; }
 .empty-state h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.5rem; }
 .empty-state p { color: var(--bark-light); margin-bottom: 1.5rem; }
+
+/* --- Value Cards --- */
+.value-card {
+  background-color: var(--white); border-radius: 8px;
+  padding: 2rem; text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+.value-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.value-title { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.75rem; }
+.value-text { color: var(--bark-light); font-size: 0.9rem; line-height: 1.6; }
+/* --- Image Placeholder --- */
+.image-placeholder {
+  width: 100%; border-radius: 8px;
+  background-size: cover; background-position: center;
+  background-color: var(--cream-dark);
+}
+/* --- Toast Notification --- */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background-color: var(--primary); color: var(--white);
+  padding: 1rem 1.5rem; border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 3000;
+  transform: translateY(150%); transition: transform 0.4s ease;
+  max-width: 380px; font-size: 0.9rem;
+}
+.toast.show { transform: translateY(0); }
+.toast.success { border-left: 4px solid var(--success); }
+.toast.error { border-left: 4px solid var(--error); }
+/* --- Success Message --- */
+.success-message {
+  text-align: center; padding: 3rem 2rem;
+  background-color: var(--white); border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.success-icon {
+  width: 70px; height: 70px; margin: 0 auto 1.5rem;
+  background-color: rgba(22, 163, 74, 0.1); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; color: var(--success);
+}
+/* --- Scroll Animations --- */
+.animate-on-scroll {
+  opacity: 0; transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
