@@ -116,4 +116,13 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
   transition: color 0.3s ease, padding-left 0.3s ease;
 }
 .mobile-link:hover, .mobile-link.active { color: var(--accent); padding-left: 0.5rem; }
+/* Homepage Styles */
+.hero, .page-hero {
+  position: relative; min-height: 85vh;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--primary);
+  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200');
+  background-size: cover; background-position: center; overflow: hidden;
+}
+
 
