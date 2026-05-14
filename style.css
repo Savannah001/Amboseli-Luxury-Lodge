@@ -220,3 +220,13 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
 .cards-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 .two-col-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
 .three-col-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+/* Call to action section (CTA) */
+.cta-section {
+  background-color: var(--primary); padding: 5rem 0;
+  text-align: center; color: var(--white);
+}
+.cta-title { font-size: 2rem; color: var(--white); margin-bottom: 1rem; }
+.cta-text {
+  color: rgba(255,255,255,0.7); font-size: 1.1rem;
+  max-width: 600px; margin: 0 auto 2rem; line-height: 1.7;
+}
