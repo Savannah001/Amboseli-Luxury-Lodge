@@ -16,3 +16,18 @@ function calculateNights(checkIn, checkOut) {
   var diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
   return diff > 0 ? diff : 0;
 }
+// Check if email is valid
+function isValidEmail(email) {
+  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+// Check if phone number is valid
+function isValidPhone(phone) {
+  var regex = /^[\+]?[\d\s\-\(\)]{7,20}$/;
+  return regex.test(phone);
+}
+// Get today's date as YYYY-MM-DD
+function getTodayString() {
+  return new Date().toISOString().split('T')[0];
+}
