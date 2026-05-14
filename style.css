@@ -282,3 +282,20 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
 .modal-box h3 { font-size: 1.25rem; color: var(--primary); margin-bottom: 0.75rem; }
 .modal-box p { color: var(--bark-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
 .modal-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+/* Our Package Cards */
+.package-card {
+  background-color: var(--white); border-radius: 8px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.package-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+.package-img { height: 200px; background-size: cover; background-position: center; }
+.package-body { padding: 1.5rem; }
+.package-category {
+  font-size: 0.7rem; font-weight: 700; color: var(--accent-dark);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;
+}
+.package-title { font-size: 1.2rem; color: var(--primary); margin-bottom: 0.75rem; }
+.package-desc {
+  font-size: 0.9rem; color: var(--bark-light); line-height: 1.6;
+}
