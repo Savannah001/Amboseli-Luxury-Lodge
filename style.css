@@ -216,3 +216,7 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
   font-size: 0.9rem; color: var(--bark-light);
   line-height: 1.6; margin-bottom: 1rem;
 }
+/* --- Grids --- */
+.cards-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.two-col-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+.three-col-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
