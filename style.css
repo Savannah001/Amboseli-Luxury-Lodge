@@ -230,3 +230,10 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
   color: rgba(255,255,255,0.7); font-size: 1.1rem;
   max-width: 600px; margin: 0 auto 2rem; line-height: 1.7;
 }
+/* Footer */
+.footer {
+  background-color: var(--primary-dark); padding: 2rem 0;
+}
+.footer-bottom {
+  text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.5);
+}
