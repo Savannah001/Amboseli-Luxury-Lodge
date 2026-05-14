@@ -43,14 +43,23 @@ h1, h2, h3, .section-title, .card-title, .package-title, .value-title {
   padding: 1rem 1.5rem;
   transition: background-color 0.3s ease, padding 0.3s ease;
 }
-
 .navbar.scrolled {
   background-color: rgba(26, 60, 52, 0.97);
   padding: 0.5rem 1.5rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
-
 .navbar nav {
   max-width: 1200px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
 }
+
+/* Text Logo styling - the one taking place of a Logo */
+.logo {
+  display: flex; align-items: center; gap: 0.5rem;
+  text-decoration: none; color: var(--white);
+}
+.logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem; font-weight: bold; letter-spacing: 2px;
+}
+
