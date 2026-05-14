@@ -57,3 +57,82 @@ function deleteBooking(id) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
   return true;
 }
+// Notification
+function showToast(message, type) {
+  var existing = document.querySelector('.toast');
+  if (existing) { existing.remove(); }
+  var toast = document.createElement('div');
+  toast.className = 'toast ' + (type || 'success');
+  toast.innerHTML = '<span>' + message + '</span>';
+  document.body.appendChild(toast);
+  setTimeout(function() { toast.classList.add('show'); }, 10);
+  setTimeout(function() {
+    toast.classList.remove('show');
+    setTimeout(function() { toast.remove(); }, 400);
+  }, 4000);
+}
+// Navigation
+function initNavigation() {
+  var navbar = document.querySelector('.navbar');
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var closeBtn = document.getElementById('mobile-close-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileOverlay = document.getElementById('mobile-overlay');
+  // Navbar background on scroll
+  if (navbar) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
+    // Open mobile menu
+  function openMobileMenu() {
+    if (mobileMenu) mobileMenu.classList.add('open');
+    if (mobileOverlay) mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  // Close mobile menu
+  function closeMobileMenu() {
+    if (mobileMenu) mobileMenu.classList.remove('open');
+    if (mobileOverlay) mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (menuBtn) menuBtn.addEventListener('click', openMobileMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
+  if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+  // Close menu on link click
+  var mobileLinks = document.querySelectorAll('.mobile-link');
+  for (var i = 0; i < mobileLinks.length; i++) {
+    mobileLinks[i].addEventListener('click', closeMobileMenu);
+  }
+  // Highlight active page link
+  setActiveNavLink();
+}
+// Set active class on current page nav link
+function setActiveNavLink() {
+  var path = window.location.pathname;
+  var filename = path.split('/').pop() || 'index.html';
+  var pageMap = {
+    'index.html': 'home',
+    'about.html': 'about',
+    'experiences.html': 'experiences',
+    'book.html': 'book',
+    'reservations.html': 'reservations'
+  };
+  var activePage = pageMap[filename];
+  var navLinks = document.querySelectorAll('.nav-link');
+  for (var i = 0; i < navLinks.length; i++) {
+    if (navLinks[i].dataset.page === activePage) {
+      navLinks[i].classList.add('active');
+    }
+  }
+  var mobileLinks = document.querySelectorAll('.mobile-link');
+  for (var j = 0; j < mobileLinks.length; j++) {
+    if (mobileLinks[j].dataset.page === activePage) {
+      mobileLinks[j].classList.add('active');
+    }
+  }
+}
