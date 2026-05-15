@@ -22,13 +22,21 @@ This project provides a complete booking interface for a luxury safari lodge. It
 - **Single Data Source:** The Book page adds data; all other pages read from localStorage
 
 ## File Structure
+
 ├── index.html # Home page with hero, stats, experiences, testimonials
+
 ├── about.html # About page with story, values, team, conservation impact
+
 ├── book.html # Booking form (ADD data page) with validation
+
 ├── experiences.html # Safari packages with filtering by category
+
 ├── reservations.html # View and manage bookings (READ/DELETE from localStorage)
+
 ├── style.css # External stylesheet for shared components
+
 ├── script.js # All JavaScript functionality
+
 └── README.md # Project documentation
 
 ## How to Use
